@@ -1,0 +1,29 @@
+{
+  "name": "mdialog",
+  "version": "1.0.0",
+  "description": "无依赖的移动端h5弹层组件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouxingzhi/mdialog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ouxingzhi/mdialog/issues"
+  },
+  "homepage": "https://github.com/ouxingzhi/mdialog#readme",
+  "devDependencies": {
+    "ejs-loader": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5",
+    "gulp-webpack": "^1.5.0"
+  }
+}

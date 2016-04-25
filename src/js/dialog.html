@@ -1,0 +1,18 @@
+<div class="mdialog-box <%=classs%>">
+	<div class="mdialog-padding">
+		<%if(useClose){%>
+		<span class="mdialog-close">x</span>
+		<%}%>
+		<%if(useTitle){%>
+		<div class="mdialog-head">
+			<h3><%=title%></h3>
+		</div>
+		<%}%>
+		<div class="mdialog-body">
+			<%=content%>
+		</div>
+		<%if(useButton){%>
+		<div class="mdialog-buttons"></div>
+		<%}%>
+	</div>
+</div>

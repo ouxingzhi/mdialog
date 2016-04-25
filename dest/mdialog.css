@@ -1,0 +1,64 @@
+html,
+body {
+  padding: 0;
+  margin: 0; }
+
+.mdialog-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-animation: fadeInUp 0.5s ease both;
+  animation: fadeInUp 1s ease both; }
+
+.mdialog-box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.2em;
+  -webkit-animation: fadeInUp 0.5s ease both;
+  animation: fadeInUp 1s ease both;
+  text-align: center; }
+
+.mdialog-padding {
+  padding: 8px; }
+
+.mdialog-loading {
+  width: 50px;
+  height: 50px; }
+
+.mdialog-toast {
+  padding: 5px 10px; }
+
+.mdialog-alert {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 200px; }
+
+.mdialog-head {
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 10px; }
+
+.mdialog-head h3 {
+  margin: 0px;
+  padding: 0px; }
+
+.mdialog-buttons {
+  margin-top: 10px; }
+
+.mdialog-btn-item {
+  padding: 5px; }
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
