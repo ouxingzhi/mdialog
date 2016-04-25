@@ -1,9 +1,21 @@
 
+var base = require('./base.js');
 var dialog = require('./dialog.js');
 
-function toast(content,timeout,callback){
+var instances = {};
 
-	var d = new dialog({
+var defaultInstanceName = 'default';
+
+function toast(content,timeout,callback,name){
+
+	name = name || defaultInstanceName;
+
+	if(instances[name]){
+		instances[name].close();
+		instances[name] = null;
+	}
+
+	instances[name] = new dialog({
 		container:'body',
 		useTitle:false,
 		content:content,
@@ -18,7 +30,7 @@ function toast(content,timeout,callback){
 	});
 	if(timeout){
 		setTimeout(function(){
-			d.close();
+			instances[name] && instances[name].close();
 			if(callback){
 				callback();
 			}
@@ -26,12 +38,27 @@ function toast(content,timeout,callback){
 	}
 
 	var closefn = function(){
-		d.close();
+		instances[name] && instances[name].close();
 	}
 	
 	
-	d.show();
-	return d;
+	instances[name].show();
+	return instances[name];
+}
+
+toast.close = function(name){
+	name = name || defaultInstanceName;
+	if(instances[name]){
+		instances[name].close();
+	}
+}
+
+toast.closeAll = function(){
+	base.each(instances,function(instance){
+		if(instance){
+			instance.close();
+		}
+	});
 }
 
 module.exports = toast;

@@ -2,7 +2,13 @@
 var base = require('./base.js');
 var dialog = require('./dialog.js');
 
-function alert(obj){
+var instances = {};
+
+var defaultInstanceName = 'default';
+
+function alert(obj,name){
+
+	name = name || defaultInstanceName;
 
 	obj = obj || {};
 
@@ -44,7 +50,12 @@ function alert(obj){
 		});
 	}
 
-	var d = new dialog({
+	if(instances[name]){
+		instances[name].close();
+		instances[name] = null;
+	}
+
+	instances[name] = new dialog({
 		container:'body',
 		title:title,
 		content:content,
@@ -55,9 +66,24 @@ function alert(obj){
 		useMask:true
 	});
 		
-	d.show();
+	instances[name].show();
 	
-	return d;
+	return instances[name];
+}
+
+alert.close = function(name){
+	name = name || defaultInstanceName;
+	if(instances[name]){
+		instances[name].close();
+	}
+}
+
+alert.closeAll = function(){
+	base.each(instances,function(instance){
+		if(instance){
+			instance.close();
+		}
+	});
 }
 
 module.exports = alert;

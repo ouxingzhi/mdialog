@@ -1,10 +1,21 @@
-
+var base = require('./base.js');
 var dialog = require('./dialog.js');
 var Spinner = require('./spin.js');
 
-function loading(timeout,callback){
+var instances = {};
 
-	var d = new dialog({
+var defaultInstanceName = 'default';
+
+function loading(name){
+
+	name = name || defaultInstanceName;
+
+	if(instances[name]){
+		instances[name].close();
+		instances[name] = null;
+	}
+
+	instances[name] = new dialog({
 		container:'body',
 		useTitle:false,
 		content:'',
@@ -36,8 +47,24 @@ function loading(timeout,callback){
 		};
 		var spinner = new Spinner(opts).spin(target);
 	}
-	d.show();
-	return d;
+	instances[name].show();
+	
+	return instances[name];
+}
+
+loading.close = function(name){
+	name = name || defaultInstanceName;
+	if(instances[name]){
+		instances[name].close();
+	}
+}
+
+loading.closeAll = function(){
+	base.each(instances,function(instance){
+		if(instance){
+			instance.close();
+		}
+	});
 }
 
 module.exports = loading;

@@ -28,16 +28,23 @@
 		// });
 		// obj.show()
 		dialog.alert({
-			content:'哈哈',
-			useOkBtn:false,
-			cancelHandler:function(){
-				var d = dialog.loading();
-				this.close();
-				d.elroot.on('click',function(){
-					d.close();
-				})
-			}
-		});
+			title:'ahahah',
+			okHandler:function(){
+				//this.close();
+				dialog.alert({
+					title:'哈哈',
+					okHandler:function(){
+						dialog.loading()
+						setTimeout(function(){
+							dialog.loading.close();
+						},3000)
+					}
+				},'namae')
+			},
+			useCancelBtn:false
+		})
+
+		
 	</script>
 </body>
 </html>

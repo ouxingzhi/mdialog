@@ -582,7 +582,13 @@
 	var base = __webpack_require__(2);
 	var dialog = __webpack_require__(1);
 
-	function alert(obj){
+	var instances = {};
+
+	var defaultInstanceName = 'default';
+
+	function alert(obj,name){
+
+		name = name || defaultInstanceName;
 
 		obj = obj || {};
 
@@ -624,7 +630,12 @@
 			});
 		}
 
-		var d = new dialog({
+		if(instances[name]){
+			instances[name].close();
+			instances[name] = null;
+		}
+
+		instances[name] = new dialog({
 			container:'body',
 			title:title,
 			content:content,
@@ -635,9 +646,24 @@
 			useMask:true
 		});
 			
-		d.show();
+		instances[name].show();
 		
-		return d;
+		return instances[name];
+	}
+
+	alert.close = function(name){
+		name = name || defaultInstanceName;
+		if(instances[name]){
+			instances[name].close();
+		}
+	}
+
+	alert.closeAll = function(){
+		base.each(instances,function(instance){
+			if(instance){
+				instance.close();
+			}
+		});
 	}
 
 	module.exports = alert;
@@ -646,13 +672,24 @@
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+	var base = __webpack_require__(2);
 	var dialog = __webpack_require__(1);
 	var Spinner = __webpack_require__(9);
 
-	function loading(timeout,callback){
+	var instances = {};
 
-		var d = new dialog({
+	var defaultInstanceName = 'default';
+
+	function loading(name){
+
+		name = name || defaultInstanceName;
+
+		if(instances[name]){
+			instances[name].close();
+			instances[name] = null;
+		}
+
+		instances[name] = new dialog({
 			container:'body',
 			useTitle:false,
 			content:'',
@@ -684,8 +721,24 @@
 			};
 			var spinner = new Spinner(opts).spin(target);
 		}
-		d.show();
-		return d;
+		instances[name].show();
+		
+		return instances[name];
+	}
+
+	loading.close = function(name){
+		name = name || defaultInstanceName;
+		if(instances[name]){
+			instances[name].close();
+		}
+	}
+
+	loading.closeAll = function(){
+		base.each(instances,function(instance){
+			if(instance){
+				instance.close();
+			}
+		});
 	}
 
 	module.exports = loading;
@@ -1065,11 +1118,23 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	
+	var base = __webpack_require__(2);
 	var dialog = __webpack_require__(1);
 
-	function toast(content,timeout,callback){
+	var instances = {};
 
-		var d = new dialog({
+	var defaultInstanceName = 'default';
+
+	function toast(content,timeout,callback,name){
+
+		name = name || defaultInstanceName;
+
+		if(instances[name]){
+			instances[name].close();
+			instances[name] = null;
+		}
+
+		instances[name] = new dialog({
 			container:'body',
 			useTitle:false,
 			content:content,
@@ -1084,7 +1149,7 @@
 		});
 		if(timeout){
 			setTimeout(function(){
-				d.close();
+				instances[name] && instances[name].close();
 				if(callback){
 					callback();
 				}
@@ -1092,12 +1157,27 @@
 		}
 
 		var closefn = function(){
-			d.close();
+			instances[name] && instances[name].close();
 		}
 		
 		
-		d.show();
-		return d;
+		instances[name].show();
+		return instances[name];
+	}
+
+	toast.close = function(name){
+		name = name || defaultInstanceName;
+		if(instances[name]){
+			instances[name].close();
+		}
+	}
+
+	toast.closeAll = function(){
+		base.each(instances,function(instance){
+			if(instance){
+				instance.close();
+			}
+		});
 	}
 
 	module.exports = toast;
