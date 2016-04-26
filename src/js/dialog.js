@@ -182,7 +182,7 @@ dialog.prototype = {
 			}
 			this.elroot.show();
 			this.calcRoomPos();
-			this.onPreShow();
+			this.onShow();
 		},this.elroot,this.useMask?this.elmask:null);
 		
 	},

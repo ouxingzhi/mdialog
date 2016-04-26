@@ -4,45 +4,15 @@
 	<meta charset="UTF-8">
 	<title>mdialog test</title>
 	<link rel="stylesheet" type="text/css" href="../dest/mdialog.min.css">
-	<script type="text/javascript" src="../dest/mdialog.min.js"></script>
+	<script type="text/javascript" src="../dest/mdialog.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
 
-		// var obj = new dialog({
-		// 	container:'body',
-		// 	title:'title',
-		// 	useTitle:false,
-		// 	content:'content',
-		// 	useClose:false,
-		// 	buttons:[{
-		// 		title:'确定',
-		// 		click:function(){
-		// 			console.log(this.close())
-		// 		}
-		// 	}],
-		// 	useButton:true,
-		// 	classs:'',
-		// 	useMask:true,
-		// 	timer:false
-		// });
-		// obj.show()
-		dialog.alert({
-			title:'ahahah',
-			okHandler:function(){
-				//this.close();
-				dialog.alert({
-					title:'哈哈',
-					okHandler:function(){
-						dialog.loading()
-						setTimeout(function(){
-							dialog.loading.close();
-						},3000)
-					}
-				},'namae')
-			},
-			useCancelBtn:false
-		})
+		mdialog.alert({
+			title:'提示2',
+			content:'哈哈哈哈'
+		});
 
 		
 	</script>

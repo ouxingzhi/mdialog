@@ -3,6 +3,9 @@ body {
     padding: 0;
     margin: 0;
 }
+*{
+    outline:none;
+}
 
 .mdialog-mask {
     position: fixed;
@@ -22,6 +25,8 @@ body {
     -webkit-animation: fadeInUp 0.5s ease both;
     animation: fadeInUp 1s ease both;
     text-align:center;
+    background:#000;
+    color:#fff;
 }
 
 
@@ -30,8 +35,11 @@ body {
 }
 
 .mdialog-loading {
-    width: 50px;
+    border: 0;
     height: 50px;
+    width: auto;
+    padding: 0px 10px;
+    background: #000;
 }
 
 .mdialog-toast {
@@ -79,3 +87,81 @@ body {
         opacity: 1;
     }
 }
+
+.mdialog-loading{
+    .mdialog-padding{
+        padding:0px;
+    }
+    .loader-box {
+        float: left;
+        height:100%;
+    }
+
+    .loader {
+        margin-top:4px;
+        width:40px;
+        height:40px;
+        position:relative;
+    }
+
+    .loader .spinner{
+        left:50%;
+        top:50%;
+    }
+
+    .loader-title {
+        font-size: 14px;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color:#fff;
+    }
+}
+
+.mdialog-alert{
+    background:#282f33;
+    color:#b7b9ba;
+    border-radius:10px;
+    overflow:hidden;
+    .mdialog-head{
+        height:30px;
+        line-height:30px;
+        margin-bottom:5px;
+    }
+    .mdialog-body{
+        padding:5px 0px 20px;
+    }
+    .mdialog-padding{
+        padding:0px;
+    }
+    .mdialog-buttons{
+        font-size:0;
+        height:30px;
+        padding:0px;
+        margin:0px;
+        border-top:1px solid #343b3f;
+        .mdialog-btn-item{
+            width:50%;
+            display:inline-block;
+            padding:0px;
+
+            button{
+                border:0px;
+                height:30px;
+                width:100%;
+                background:#282f33;
+                color:#d4d5d6;
+            }
+            button:first-child{
+                border-right:1px solid #343b3f;
+            }
+
+            button:active{
+                background:#343b3f;
+            }
+        }
+    }
+}
+

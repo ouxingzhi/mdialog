@@ -2,6 +2,8 @@ var base = require('./base.js');
 var dialog = require('./dialog.js');
 var Spinner = require('./spin.js');
 
+var htmlfn = require('ejs!./loading.html');
+
 var instances = {};
 
 var defaultInstanceName = 'default';
@@ -18,13 +20,14 @@ function loading(name){
 	instances[name] = new dialog({
 		container:'body',
 		useTitle:false,
-		content:'',
+		content:htmlfn(),
 		useClose:false,
 		useButton:false,
 		classs:'mdialog-loading',
 		useMask:true,
 		onPreShow:function(){
-			_getSpin(this.elcontent[0]);
+			var loader = this.elcontent.find('.loader')
+			_getSpin(loader[0]);
 		}
 	});
 	function _getSpin(target){

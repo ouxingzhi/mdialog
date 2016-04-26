@@ -51,7 +51,7 @@
 
 	dialog.alert = __webpack_require__(7);
 	dialog.loading = __webpack_require__(8);
-	dialog.toast = __webpack_require__(10);
+	dialog.toast = __webpack_require__(11);
 
 /***/ },
 /* 1 */
@@ -241,7 +241,7 @@
 				}
 				this.elroot.show();
 				this.calcRoomPos();
-				this.onPreShow();
+				this.onShow();
 			},this.elroot,this.useMask?this.elmask:null);
 			
 		},
@@ -676,6 +676,8 @@
 	var dialog = __webpack_require__(1);
 	var Spinner = __webpack_require__(9);
 
+	var htmlfn = __webpack_require__(10);
+
 	var instances = {};
 
 	var defaultInstanceName = 'default';
@@ -692,13 +694,14 @@
 		instances[name] = new dialog({
 			container:'body',
 			useTitle:false,
-			content:'',
+			content:htmlfn(),
 			useClose:false,
 			useButton:false,
 			classs:'mdialog-loading',
 			useMask:true,
 			onPreShow:function(){
-				_getSpin(this.elcontent[0]);
+				var loader = this.elcontent.find('.loader')
+				_getSpin(loader[0]);
 			}
 		});
 		function _getSpin(target){
@@ -1115,6 +1118,20 @@
 
 /***/ },
 /* 10 */
+/***/ function(module, exports) {
+
+	module.exports = function (obj) {
+	obj || (obj = {});
+	var __t, __p = '';
+	with (obj) {
+	__p += '<div class="load-container">\n	<div class="loader-box">\n		<div class="loader">\n		</div>\n	</div>\n	<div class="loader-title">加载中...</div>\n</div>';
+
+	}
+	return __p
+	}
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
