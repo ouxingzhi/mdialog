@@ -61,7 +61,7 @@ function dialog(ops){
 	this.offset = function(left,top){
 		return {
 			left:left,
-			top:top+60
+			top:top
 		}
 	}
 
