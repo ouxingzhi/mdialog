@@ -205,6 +205,7 @@
 			if(this.useButton){
 				var btns = buildButtons.call(this,this.buttons);
 				this.elbutton.append(btns);
+				this.elbutton.addClass('mdialog-button-'+this.buttons.length);
 			}
 			this.elroot.hide();
 			this.container.append(this.elroot);
@@ -456,6 +457,28 @@
 			this.each(function(){
 				this.style[name] = value;
 			});
+		},
+		addClass:function(cls){
+			var clss = cls.split(' ');
+			this.each(function(){
+				var self = this;
+				if(self.classList){
+					base.each(clss,function(c){
+						self.classList.add(c);
+					});
+				}
+			})
+		},
+		removeClass:function(cls){
+			var clss = cls.split(' ');
+			this.each(function(){
+				var self = this;
+				if(self.classList){
+					base.each(clss,function(c){
+						self.classList.remove(c);
+					});
+				}
+			})
 		}
 	};
 

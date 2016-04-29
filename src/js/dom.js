@@ -106,6 +106,28 @@ var domProto = {
 		this.each(function(){
 			this.style[name] = value;
 		});
+	},
+	addClass:function(cls){
+		var clss = cls.split(' ');
+		this.each(function(){
+			var self = this;
+			if(self.classList){
+				base.each(clss,function(c){
+					self.classList.add(c);
+				});
+			}
+		})
+	},
+	removeClass:function(cls){
+		var clss = cls.split(' ');
+		this.each(function(){
+			var self = this;
+			if(self.classList){
+				base.each(clss,function(c){
+					self.classList.remove(c);
+				});
+			}
+		})
 	}
 };
 

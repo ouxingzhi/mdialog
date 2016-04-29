@@ -130,3 +130,5 @@ body {
         border-right: 1px solid #343b3f; }
       .mdialog-alert .mdialog-buttons .mdialog-btn-item button:active {
         background: #343b3f; }
+  .mdialog-alert .mdialog-button-1 .mdialog-btn-item {
+    width: 100%; }

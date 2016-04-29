@@ -146,6 +146,7 @@ dialog.prototype = {
 		if(this.useButton){
 			var btns = buildButtons.call(this,this.buttons);
 			this.elbutton.append(btns);
+			this.elbutton.addClass('mdialog-button-'+this.buttons.length);
 		}
 		this.elroot.hide();
 		this.container.append(this.elroot);
