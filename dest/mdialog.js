@@ -76,6 +76,7 @@
 		useButton:true,
 		classs:'',
 		useMask:true,
+		look:false,
 		timer:false
 	};
 
@@ -209,6 +210,16 @@
 			}
 			this.elroot.hide();
 			this.container.append(this.elroot);
+			if(this.look){
+				if(this.elmask){
+					this.elmask.on('touchmove',function(e){
+						e.preventDefault();
+					});
+					this.elroot.on('touchmove',function(e){
+						e.preventDefault();
+					});
+				}
+			}
 		},
 		calcRoomPos:function(){
 			var size = uibase.ES(this.elroot[0]);
@@ -666,7 +677,8 @@
 			buttons:buttons,
 			useButton:useButton,
 			classs:'mdialog-alert',
-			useMask:true
+			useMask:true,
+			look:true
 		});
 			
 		instances[name].show();
@@ -722,6 +734,7 @@
 			useButton:false,
 			classs:'mdialog-loading',
 			useMask:true,
+			look:true,
 			onPreShow:function(){
 				var loader = this.elcontent.find('.loader')
 				_getSpin(loader[0]);
@@ -1182,6 +1195,7 @@
 			useButton:false,
 			classs:'mdialog-toast',
 			useMask:true,
+			look:true,
 			onPreShow:function(){
 				this.elroot.on('click',closefn);
 				this.elmask.on('click',closefn);

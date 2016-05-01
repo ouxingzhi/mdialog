@@ -17,6 +17,7 @@ var defaultOptions = {
 	useButton:true,
 	classs:'',
 	useMask:true,
+	look:false,
 	timer:false
 };
 
@@ -150,6 +151,16 @@ dialog.prototype = {
 		}
 		this.elroot.hide();
 		this.container.append(this.elroot);
+		if(this.look){
+			if(this.elmask){
+				this.elmask.on('touchmove',function(e){
+					e.preventDefault();
+				});
+				this.elroot.on('touchmove',function(e){
+					e.preventDefault();
+				});
+			}
+		}
 	},
 	calcRoomPos:function(){
 		var size = uibase.ES(this.elroot[0]);

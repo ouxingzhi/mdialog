@@ -25,6 +25,7 @@ function loading(name){
 		useButton:false,
 		classs:'mdialog-loading',
 		useMask:true,
+		look:true,
 		onPreShow:function(){
 			var loader = this.elcontent.find('.loader')
 			_getSpin(loader[0]);

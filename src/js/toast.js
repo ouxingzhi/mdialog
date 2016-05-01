@@ -23,6 +23,7 @@ function toast(content,timeout,callback,name){
 		useButton:false,
 		classs:'mdialog-toast',
 		useMask:true,
+		look:true,
 		onPreShow:function(){
 			this.elroot.on('click',closefn);
 			this.elmask.on('click',closefn);

@@ -63,7 +63,8 @@ function alert(obj,name){
 		buttons:buttons,
 		useButton:useButton,
 		classs:'mdialog-alert',
-		useMask:true
+		useMask:true,
+		look:true
 	});
 		
 	instances[name].show();
